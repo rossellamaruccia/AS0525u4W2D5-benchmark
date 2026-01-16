@@ -42,7 +42,8 @@ public class Application {
 
             switch (choice) {
                 case 1:
-                    ;
+                    addGameToTheCollection(scanner, gameCollection);
+                    break;
                 case 2:
                     ;
                 case 3:
@@ -54,9 +55,11 @@ public class Application {
                 case 6:
                     ;
                 case 7:
-                    ;
+                    gameCollection.statsInquiry();
+                    break;
                 case 8:
-                    ;
+                    gameCollection.printAll();
+                    break;
                 case 0:
                     running = false;
                     System.out.println("thanks, bye!");
@@ -65,6 +68,20 @@ public class Application {
                     System.out.println("Gooby pls");
                     break;
             }
+        }
+    }
+
+    private static void addGameToTheCollection(Scanner scanner, GameCollection gameCollection) {
+        System.out.println("video or board?");
+        if (scanner.nextLine().equals("board")) {
+            System.out.println("Ok, enter the title");
+            String title = scanner.nextLine();
+            gameCollection.addGame(new BoardGame(title));
+            System.out.println("Boardgame added, thanks! See you!");
+        } else if (scanner.nextLine().equals("video")) {
+            System.out.println("Not yet, come back tomorrow!");
+        } else {
+            System.out.println("Gooby pls!");
         }
     }
 }

@@ -69,4 +69,13 @@ public class GameCollection {
         }
         return false;
     }
+
+    public void printAll() {
+        if (gameCollection.isEmpty()) {
+            System.out.println("Looks like there's nothing here...");
+            return;
+        }
+        System.out.println("---Here's what we have here... ---");
+        gameCollection.values().forEach(game -> System.out.println(game.getTitle() + ", id: " + game.getId()));
+    }
 }
