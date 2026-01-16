@@ -38,7 +38,7 @@ public class GameCollection {
         toBeModified.setPrice(modifiedPrice);
     }
 
-    public boolean statsInquiry() {
+    public void statsInquiry() {
         long videogamesNum = gameCollection.values().stream()
                 .filter(game -> game instanceof VideoGame)
                 .count();
@@ -58,16 +58,15 @@ public class GameCollection {
         System.out.println("- Number of video games: " + videogamesNum);
         System.out.println("- Number of boardgames: " + boardgamesNum);
         if (mostExpensiveGame.isPresent()) {
-            System.out.println("- the most expensive game is: " + mostExpensiveGame.get());
+            System.out.println("- the most expensive game is: " + mostExpensiveGame.get().getTitle());
         } else {
             System.out.println("- Looks like there are no games here :(");
         }
         if (averagePrices.isPresent()) {
-            System.out.println("Average price is: $" + averagePrices);
+            System.out.println("Average price is: $" + averagePrices.getAsDouble());
         } else {
             System.out.println("- Looks like there are no games here :(");
         }
-        return false;
     }
 
     public void printAll() {
