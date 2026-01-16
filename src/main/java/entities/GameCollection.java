@@ -10,8 +10,9 @@ public class GameCollection {
     }
 
 
-    public void addGame(Game game) {
+    public boolean addGame(Game game) {
         gameCollection.put(game.getId(), game);
+        return true;
     }
 
     public Game idSearch(UUID id) {
