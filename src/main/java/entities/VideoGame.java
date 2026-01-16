@@ -10,4 +10,25 @@ public class VideoGame extends Game {
         this.gameDuration = gameDuration;
         this.category = category;
     }
+
+    public int getGameDuration() {
+        return gameDuration;
+    }
+
+    public void setGameDuration(int newGameDuration) {
+        this.gameDuration = newGameDuration;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String newCategory) {
+        this.category = newCategory;
+    }
+
+    @Override
+    public double getPrice() {
+        return super.getPrice();
+    }
 }

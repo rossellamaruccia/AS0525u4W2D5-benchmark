@@ -1,19 +1,21 @@
 package entities;
 
+import java.util.UUID;
+
 public abstract class Game {
-    private String id;
+    private final UUID id;
     private String title;
     private int yearOfRelease;
     private double price;
 
-    public Game(String id, String title, int yearOfRelease, double price) {
-        this.id = id;
+    public Game(String title, int yearOfRelease, double price) {
+        this.id = UUID.randomUUID();
         this.title = title;
         this.yearOfRelease = yearOfRelease;
         this.price = price;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -28,5 +30,5 @@ public abstract class Game {
     public double getPrice() {
         return price;
     }
-    
+
 }

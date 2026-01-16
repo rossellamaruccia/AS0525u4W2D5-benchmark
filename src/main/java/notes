@@ -1,0 +1,23 @@
+public class Prodotto {
+
+    private String codice;
+    private double prezzo;
+
+    public Prodotto(String codice, double prezzo) {
+        validateCodice(codice);
+        validatePrezzo(prezzo);
+        this.codice = codice;
+        this.prezzo = prezzo;
+    }
+
+    private void validateCodice(String codice) {
+        if (codice == null || codice.length() != 8) {
+            throw new IllegalArgumentException("Codice deve essere lungo 8 caratteri");
+        }
+    }
+
+    private void validatePrezzo(double prezzo) {
+        if (prezzo < 0) {
+            throw new IllegalArgumentException("Prezzo non può essere negativo");
+        }
+    }
