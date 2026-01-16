@@ -2,20 +2,16 @@ package entities;
 
 import java.util.*;
 
-class Collection {
+public class GameCollection {
     private Map<UUID, Game> gameCollection;
 
-    public Collection() {
-        gameCollection = new HashMap<>();
+    public GameCollection() {
+        this.gameCollection = new HashMap<>();
     }
 
-    public boolean addGame(Game game) {
-        if (gameCollection.containsKey(game.getId())) {
-            System.out.println("This ID already exists!");
-            return false;
-        }
+
+    public void addGame(Game game) {
         gameCollection.put(game.getId(), game);
-        return true;
     }
 
     public Game idSearch(UUID id) {
@@ -41,7 +37,7 @@ class Collection {
         toBeModified.setPrice(modifiedPrice);
     }
 
-    public void statsInquiry() {
+    public boolean statsInquiry() {
         long videogamesNum = gameCollection.values().stream()
                 .filter(game -> game instanceof VideoGame)
                 .count();
@@ -70,5 +66,6 @@ class Collection {
         } else {
             System.out.println("- Looks like there are no games here :(");
         }
+        return false;
     }
 }

@@ -1,13 +1,16 @@
 package entities;
 
+import java.util.Random;
+
 public class BoardGame extends Game {
+    Random rndm = new Random();
     private int numberOfPlayers;
     private int gameDuration;
 
-    public BoardGame(String title, int yearOfRelease, double price, int numberOfPlayers, int gameDuration) {
-        super(title, yearOfRelease, price);
-        this.numberOfPlayers = numberOfPlayers;
-        this.gameDuration = gameDuration;
+    public BoardGame(String title) {
+        super(title);
+        this.numberOfPlayers = rndm.nextInt();
+        this.gameDuration = rndm.nextInt();
     }
 
     public int getNumberOfPlayers() {

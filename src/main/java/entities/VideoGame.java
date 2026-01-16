@@ -1,13 +1,16 @@
 package entities;
 
+import java.util.Random;
+
 public class VideoGame extends Game {
 
+    Random rndm = new Random();
     private int gameDuration;
     private String category;
 
-    public VideoGame(String title, int yearOfRelease, double price, platform platform, int gameDuration, String category) {
-        super(title, yearOfRelease, price);
-        this.gameDuration = gameDuration;
+    public VideoGame(String title, platform platform, String category) {
+        super(title);
+        this.gameDuration = rndm.nextInt();
         this.category = category;
     }
 
