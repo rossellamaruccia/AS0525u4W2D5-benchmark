@@ -4,20 +4,10 @@ public class BoardGame extends Game {
     private int numberOfPlayers;
     private int gameDuration;
 
-    public BoardGame(String id, String title, int yearOfRelease, double price, int numberOfPlayers, int gameDuration) {
-
-
-        super(id, title, yearOfRelease, price);
+    public BoardGame(String title, int yearOfRelease, double price, int numberOfPlayers, int gameDuration) {
+        super(title, yearOfRelease, price);
         this.numberOfPlayers = numberOfPlayers;
         this.gameDuration = gameDuration;
-    }
-
-    public int getGameDuration() {
-        return gameDuration;
-    }
-
-    public void setGameDuration(int newGameDuration) {
-        this.gameDuration = newGameDuration;
     }
 
     public int getNumberOfPlayers() {
@@ -26,5 +16,13 @@ public class BoardGame extends Game {
 
     public void setNumberOfPlayers(int newNumber) {
         this.numberOfPlayers = newNumber;
+    }
+
+    public int getGameDuration() {
+        return gameDuration;
+    }
+
+    public void setGameDuration(int newGameDuration) {
+        this.gameDuration = newGameDuration;
     }
 }

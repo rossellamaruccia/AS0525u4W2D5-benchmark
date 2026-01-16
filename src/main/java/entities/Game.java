@@ -23,6 +23,10 @@ public abstract class Game {
         return title;
     }
 
+    public void setTitle(String newTitle) {
+        this.title = newTitle;
+    }
+
     public int getYearOfRelease() {
         return yearOfRelease;
     }
@@ -31,4 +35,7 @@ public abstract class Game {
         return price;
     }
 
+    public void setPrice(double newPrice) {
+        this.price = newPrice;
+    }
 }
