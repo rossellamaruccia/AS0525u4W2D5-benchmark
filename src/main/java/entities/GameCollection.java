@@ -9,7 +9,6 @@ public class GameCollection {
         this.gameCollection = new HashMap<>();
     }
 
-
     public boolean addGame(Game game) {
         gameCollection.put(game.getId(), game);
         return true;

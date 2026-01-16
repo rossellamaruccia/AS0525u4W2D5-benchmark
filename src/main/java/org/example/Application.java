@@ -1,10 +1,7 @@
 package org.example;
 
 import com.github.javafaker.Faker;
-import entities.BoardGame;
-import entities.GameCollection;
-import entities.VideoGame;
-import entities.platform;
+import entities.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -39,40 +36,53 @@ public class Application {
             int choice = 1;
             try {
                 choice = Integer.parseInt(scanner.nextLine());
+
+
+                switch (choice) {
+                    case 1:
+                        addGameToTheCollection(scanner, gameCollection);
+                        break;
+                    case 2:
+                        findGameByID(scanner, gameCollection);
+                        break;
+                    case 3:
+                        ;
+                    case 4:
+                        ;
+                    case 5:
+                        removeGameByID(scanner, gameCollection);
+                        break;
+                    case 6:
+                        updateGameByID(scanner, gameCollection);
+                        break;
+                    case 7:
+                        gameCollection.statsInquiry();
+                        break;
+                    case 8:
+                        gameCollection.printAll();
+                        break;
+                    case 0:
+                        running = false;
+                        System.out.println("thanks, bye!");
+                        break;
+                    default:
+                        System.out.println("Gooby pls");
+                        break;
+                }
             } catch (InputMismatchException | IllegalArgumentException e) {
                 System.out.println("Gooby pls enter a valid number from 0 to 8");
             }
+        }
+    }
 
-            switch (choice) {
-                case 1:
-                    addGameToTheCollection(scanner, gameCollection);
-                    break;
-                case 2:
-                    ;
-                case 3:
-                    ;
-                case 4:
-                    ;
-                case 5:
-                    removeGameByID(scanner, gameCollection);
-                    break;
-                case 6:
-                    updateGameByID(scanner, gameCollection);
-                    break;
-                case 7:
-                    gameCollection.statsInquiry();
-                    break;
-                case 8:
-                    gameCollection.printAll();
-                    break;
-                case 0:
-                    running = false;
-                    System.out.println("thanks, bye!");
-                    break;
-                default:
-                    System.out.println("Gooby pls");
-                    break;
-            }
+    private static void findGameByID(Scanner scanner, GameCollection gameCollection) {
+        try {
+            System.out.println("insert the ID of the game you want to find: ");
+            UUID idToBeFound = UUID.fromString(scanner.nextLine());
+            Game found = gameCollection.idSearch(idToBeFound);
+            System.out.println("Here it is: " + found.getTitle());
+        } catch (InputMismatchException | IllegalArgumentException e) {
+            System.out.println("Gooby pls you inserted the wrong input");
         }
     }
 
@@ -103,16 +113,21 @@ public class Application {
     }
 
     private static void addGameToTheCollection(Scanner scanner, GameCollection gameCollection) {
-        System.out.println("video or board?");
-        if (scanner.nextLine().equals("board")) {
-            System.out.println("Ok, enter the title");
-            String title = scanner.nextLine();
-            gameCollection.addGame(new BoardGame(title));
-            System.out.println("Boardgame added, thanks! See you!");
-        } else if (scanner.nextLine().equals("video")) {
-            System.out.println("Not yet, come back tomorrow!");
-        } else {
-            System.out.println("Gooby pls!");
+        try {
+            System.out.println("video or board?");
+            if (scanner.nextLine().equals("board")) {
+                System.out.println("Ok, enter the title");
+                String title = scanner.nextLine();
+                gameCollection.addGame(new BoardGame(title));
+                System.out.println("Boardgame added, thanks! See you!");
+            } else if (scanner.nextLine().equals("video")) {
+                System.out.println("Not yet, come back tomorrow!");
+            } else {
+                System.out.println("Gooby pls!");
+            }
+        } catch (InputMismatchException | IllegalArgumentException e) {
+            System.out.println("Gooby pls you inserted the wrong input");
         }
+
     }
 }
